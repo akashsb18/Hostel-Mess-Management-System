@@ -43,7 +43,6 @@ public:
                 cout << "Lunch :" << menu[opt][Lunch] << endl;
                 cout << "Snacks :" << menu[opt][Snacks] << endl;
                 cout << "Dinner :" << menu[opt][Dinner] << endl;
-                break;
             }
         } while (opt != 9);
     }
@@ -65,7 +64,7 @@ class Students
 
 public:
     int tempCapacity = 0;
-
+    bool boys = false, girls = false;
     vector<long long> Mess_Fees;
 
     void addStudent()
@@ -75,6 +74,7 @@ public:
         {
             cout << "Enter data of Students " << i + 1 << endl
                  << endl;
+
             cout << "Enter Student name: ";
             cin >> e[i].name;
 
@@ -217,7 +217,8 @@ public:
 class Mess : public MMC, public Menu
 {
 private:
-    int capacity;
+    int capacity = 0;
+    vector<int> cap;
 
 public:
     Mess()
@@ -225,8 +226,11 @@ public:
     }
     void setCapacity()
     {
-        cout << "Set the total capacity of the mess !!" << endl;
+        system("cls");
+        cout
+            << "Set the total capacity of the mess !!" << endl;
         cin >> capacity;
+        cap.push_back(capacity);
         for (int i = 0; i < 6; i++)
         {
             cout << ".";
@@ -238,14 +242,20 @@ public:
     }
     int totalSeatsAvailable()
     {
-        int t = capacity - tempCapacity;
-        if (t < 0)
+        int totalCapacity = accumulate(cap.begin(), cap.end(), 0);
+        int t = totalCapacity - tempCapacity;
+
+        if (capacity == 0)
+        {
+            return -1;
+        }
+        else if (t < 0)
         {
             cout << "No seats available" << endl;
         }
         else
         {
-            return 2;
+            return t;
         }
     }
 };
@@ -263,7 +273,7 @@ int main()
     do
     {
         // system("cls");
-        cout << endl;
+        // cout << endl;
         cout << "######## Mess Management #########\n";
         cout << endl;
         cout << "### Seatings information ###" << endl;
@@ -289,7 +299,16 @@ int main()
             m.setCapacity();
             break;
         case 2:
-            cout << m.totalSeatsAvailable() << " Seats available" << endl;
+            if (m.totalSeatsAvailable() == -1)
+            {
+                cout << "No Seats added" << endl;
+            }
+            else
+            {
+                cout << m.totalSeatsAvailable() << " Seats available" << endl;
+            }
+            Sleep(1500);
+            system("cls");
 
             break;
         case 3:
@@ -324,6 +343,5 @@ int main()
         }
 
     } while (opt != 12);
-
     return 0;
 }
