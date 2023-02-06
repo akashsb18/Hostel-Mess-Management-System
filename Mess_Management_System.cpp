@@ -325,9 +325,11 @@ int main()
             break;
         case 7:
             m.showIngredients();
+            Sleep(2500);
+            system("cls");
             break;
         case 8:
-            cout << m.showTotalFund();
+            cout << m.showTotalFund() << endl;
             break;
         case 9:
             m.showAvailableFund();

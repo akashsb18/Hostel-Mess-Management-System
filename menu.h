@@ -53,7 +53,7 @@ void createMenu()
     menu[FRI].push_back("Tea, Samosa");
     menu[FRI].push_back("Roti, Chicken Biryani, Matar Paneer, Papad");
     menu[SAT].push_back("Sprouts, Uttapam, Chutney, Tea");
-    menu[SAT].push_back("Rice, Dal, Roti, French Fries, Khichdi, Dahi, Mised Veg Curry");
+    menu[SAT].push_back("Rice, Dal, Roti, French Fries, Khichdi, Dahi, Mixed Veg Curry");
     menu[SAT].push_back("Tea, Chat");
     menu[SAT].push_back("Rice, Dal, Roti, Fish Curry, Mushroom Butter Masala, Kheer");
 }
